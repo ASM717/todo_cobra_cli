@@ -18,7 +18,6 @@ var deleteCmd = &cobra.Command{
 	Short: "Удаление задачи по номеру",
 	Args:  cobra.ExactArgs(1), // Cobra проверит, что передан ровно 1 аргумент,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("delete called")
 		// 1. Конвертируем строку в число (индекс)
 		idx, err := strconv.Atoi(args[0])
 		if err != nil {
@@ -60,7 +59,6 @@ func init() {
 }
 
 /*
-Главный финт ушами здесь: tasks[realIdx+1:]...
 tasks[:realIdx] — берем элементы с начала до удаляемого (не включая его).
 tasks[realIdx+1:] — берем элементы от следующего после удаляемого до самого конца.
 ... (variadic) — это «распаковка».
